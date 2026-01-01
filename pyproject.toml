@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scale-align"
-version = "0.1.0"
+version = "0.1.1"
 description = "Standard Classification Alignment & Local Enrichment - Automate audit and enrichment of industrial classifications"
 readme = "README.md"
 license = "MIT"
