@@ -6,13 +6,20 @@ Automate the audit and enrichment of national classifications (e.g., KBLI) using
 
 - **Bidirectional Asymmetric Retrieval**: Captures hierarchical "entailment" relationships common in classifications
 - **Competitive Selection**: Max-score + margin algorithm for controlled mapping while minimizing noise
-- **E5-Large-Instruct Model**: Optimized for asymmetric retrieval tasks
+- **Multilingual E5-Large-Instruct Model**: Instruction-tuned model optimized for asymmetric retrieval tasks
 
 ## Installation
 
 ```bash
 pip install scale-align
 ```
+
+## Google Colab
+
+Using in Google Colab? Try our [**Colab Notebook**](examples/colab_quickstart.ipynb).
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mdmahendri/scale-align/blob/main/examples/colab_quickstart.ipynb)
+
 
 ## Quick Start
 

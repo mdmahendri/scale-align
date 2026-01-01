@@ -8,10 +8,10 @@ from transformers import AutoModel, AutoTokenizer
 
 
 class E5Embedder:
-    """Wrapper for intfloat/e5-large-instruct model with asymmetric prompting."""
+    """Wrapper for intfloat/multilingual-e5-large-instruct model with asymmetric prompting."""
 
-    MODEL_NAME = "intfloat/e5-large-instruct"
-    QUERY_INSTRUCTION = "Instruct: retrieve parallel sentences; Query: "
+    MODEL_NAME = "intfloat/multilingual-e5-large-instruct"
+    QUERY_INSTRUCTION = "Instruct: retrieve parallel sentences\nQuery: "
 
     def __init__(
         self,
@@ -36,9 +36,17 @@ class E5Embedder:
             self.device = device
 
         # Load model and tokenizer
-        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-        self.model = AutoModel.from_pretrained(self.model_name).to(self.device)
-        self.model.eval()
+        try:
+            print(f"Loading tokenizer from {self.model_name}...")
+            self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+            print(f"Loading model from {self.model_name}...")
+            self.model = AutoModel.from_pretrained(self.model_name).to(self.device)
+            self.model.eval()
+            print(f"Model loaded successfully on {self.device}")
+        except Exception as e:
+            print(f"\nError loading model '{self.model_name}'")
+            print(f"Error details: {str(e)}")
+            raise
 
     def _mean_pooling(
         self, model_output: torch.Tensor, attention_mask: torch.Tensor
